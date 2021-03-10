@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from fastapi.security import OAuth2PasswordBearer
 
 
 load_dotenv()
@@ -31,3 +32,4 @@ LOGIN_PAGE = os.getenv("LOGIN_PAGE")
 REDIS_HOSTNAME = os.getenv("REDIS_HOSTNAME")
 REDIS_PORT = os.getenv("REDIS_PORT")
 REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/login/")

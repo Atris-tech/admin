@@ -3,6 +3,21 @@ from db_models.models.token_model import TokenModel
 from Services.redis_service import set_val
 from fastapi import HTTPException
 import error_constants
+from jose import JWTError, jwt
+import settings
+
+
+def verify_jwt_token(token):
+    try:
+        payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
+        return payload
+    except JWTError as e:
+        """LOG JWT ERROR HERE"""
+        print(e)
+        return HTTPException(
+            status_code=error_constants.TOKEN_EXPIRED_INVALID["status_code"],
+            detail=error_constants.TOKEN_EXPIRED_INVALID["detail"]
+        )
 
 
 def check_user(email):
