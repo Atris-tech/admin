@@ -16,16 +16,16 @@ from Services.redis_service import get_val
 router = APIRouter()
 
 
-@router.get("/stt_endpoints/")
+@router.get("/get_endpoints/")
 def get_endpoints(
         token: str = Depends(oauth2_scheme)
 ):
     verify_jwt_token(token)
-    stt_end_point = get_val(key="STT_UPLOAD_URL")
-    f_align_end_point = get_val(key="FORCED_ALIGN_UPLOAD_URL")
-    sound_recog_endpoint = get_val(key="SOUND_RECOG_ENDPOINT")
     return {
-        "nemo": stt_end_point,
-        "f_align": f_align_end_point,
-        "sound_recog": sound_recog_endpoint
+        "nemo": get_val(key="STT_UPLOAD_URL"),
+        "f_align": get_val(key="FORCED_ALIGN_UPLOAD_URL"),
+        "sound_recog": get_val(key="SOUND_RECOG_ENDPOINT"),
+        "enity_recog": get_val(key="ENTITY_ENDPOINT"),
+        "summary_key_words_gen": get_val(key="SUMMARY_KEYWORDS_ENDPOINT"),
+        "emotion_analysis": get_val(key="EMOTION_ANALYSIS_ENDPOINT")
     }

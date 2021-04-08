@@ -4,7 +4,7 @@ from fastapi.security import OAuth2PasswordBearer
 
 
 load_dotenv()
-PROJECT_NAME = "ATRIS Backend"
+PROJECT_NAME = "ATRIS ADMIN CONSOLE"
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM")
 JWT_ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("JWT_ACCESS_TOKEN_EXPIRE_MINUTES"))
@@ -33,3 +33,5 @@ REDIS_HOSTNAME = os.getenv("REDIS_HOSTNAME")
 REDIS_PORT = os.getenv("REDIS_PORT")
 REDIS_PASSWORD = os.getenv("REDIS_PASSWORD")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/login/")
+MICRO_SERVICES_ACCESS_TOKEN = os.getenv("MICRO_SERVICES_ACCESS_TOKEN")
+MICRO_SERVICES_ACCESS_TOKEN_EXP_YEARS = int(os.getenv("MICRO_SERVICES_ACCESS_TOKEN_EXP_YEARS"))

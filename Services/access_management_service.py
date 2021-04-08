@@ -20,6 +20,18 @@ def verify_jwt_token(token):
         )
 
 
+def create_jwt_token(data, secret_key=False):
+    print(data)
+    to_encode = data.copy()
+    if secret_key:
+        secret_key_jwt = secret_key
+    else:
+        secret_key_jwt = settings.JWT_SECRET_KEY
+    encoded_jwt = jwt.encode(to_encode, secret_key_jwt, algorithm=settings.JWT_ALGORITHM)
+    print(encoded_jwt)
+    return encoded_jwt
+
+
 def check_user(email):
     try:
         user_obj = UserModel.objects.get(email_id=email)
