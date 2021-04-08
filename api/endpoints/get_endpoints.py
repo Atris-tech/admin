@@ -1,7 +1,5 @@
 # 1. increase user space api
 # 2. decrease user space api
-# 3. get stt_endpoint
-# 4. change stt_endpoint
 # 5. get stt premium plans
 # 6. remove stt premium plans
 # 7. change user plan
@@ -19,7 +17,7 @@ router = APIRouter()
 
 
 @router.get("/stt_endpoints/")
-def ban(
+def get_endpoints(
         token: str = Depends(oauth2_scheme)
 ):
     verify_jwt_token(token)
