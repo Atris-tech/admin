@@ -26,3 +26,18 @@ def get_val(key, json_type=False):
             return False
     else:
         return redis_obj.get(key)
+
+
+def get_list(list_name):
+    results = list()
+    for i in range(0, redis_obj.llen(list_name)):
+        results.append(redis_obj.lindex(list_name, i))
+    return results
+
+
+def add_to_list(list_name, val):
+    if type(val) == list:
+        for element in val:
+            redis_obj.lpush(list_name, element)
+    elif type(val) == str:
+        redis_obj.lpush(list_name, val)

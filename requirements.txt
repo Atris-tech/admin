@@ -7,3 +7,4 @@ pymongo
 python-jose[cryptography]
 python-dotenv
 python-dateutil
+requests

@@ -15,6 +15,8 @@ class EndpointsModel(BaseModel):
     smry_kwrds: HttpUrl
     entty: HttpUrl
     emot: HttpUrl
+    ocr: HttpUrl
+    image_label: HttpUrl
 
 
 @router.post("/set_endpoints/")
@@ -29,4 +31,6 @@ def set_endpoints(
     set_val(key="SUMMARY_KEYWORDS_ENDPOINT",  val=endpoint_obj.smry_kwrds)
     set_val(key="ENTITY_ENDPOINT", val=endpoint_obj.entty)
     set_val(key="EMOTION_ANALYSIS_ENDPOINT", val=endpoint_obj.emot)
+    set_val(key="OCR_ENDPOINT", val=endpoint_obj.ocr)
+    set_val(key="IMAGE_LABEL_ENPOINT", val=endpoint_obj.image_label)
     return True
